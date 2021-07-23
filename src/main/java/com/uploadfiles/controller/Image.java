@@ -33,7 +33,7 @@ public class Image {
     public String uploadPost(@RequestParam("file") MultipartFile filed) throws Exception {
 
 
-        File file = new File("D:\\GitHub\\Favorskij\\UploadFiles\\src\\main\\webapp\\WEB-INF\\image\\" + filed.getOriginalFilename());
+        File file = new File("D:\\WEB-INF\\image\\" + filed.getOriginalFilename());
 
         filed.transferTo(file);
 
