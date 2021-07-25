@@ -18,6 +18,7 @@ import java.util.Objects;
 public class Image {
 
 
+    // https://www.baeldung.com/spring-httpmessageconverter-rest
     // https://www.baeldung.com/spring-multipartfile-to-file
 
     @Autowired
