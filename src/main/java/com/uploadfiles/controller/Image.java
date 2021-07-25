@@ -18,6 +18,7 @@ public class Image {
 
     // https://www.baeldung.com/spring-httpmessageconverter-rest
     // https://www.baeldung.com/spring-multipartfile-to-file
+    // https://www.baeldung.com/spring-file-upload
 
     @Autowired
     ServletContext servletContext;
