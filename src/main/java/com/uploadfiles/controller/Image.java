@@ -1,5 +1,8 @@
 package com.uploadfiles.controller;
 
+
+
+import com.uploadfiles.service.RenameFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
-import java.io.File;
+import java.io.*;
+import java.util.Objects;
 
 @Controller
 public class Image {
@@ -30,12 +34,27 @@ public class Image {
 
 
     @PostMapping(value = "/uploadFile")
-    public String uploadPost(@RequestParam("file") MultipartFile filed) throws Exception {
+    public String uploadPost(@RequestParam("file") MultipartFile multipartFile) throws IOException {
 
 
-        File file = new File("D:\\WEB-INF\\image\\" + filed.getOriginalFilename());
+        String extension;
 
-        filed.transferTo(file);
+        switch (Objects.requireNonNull(multipartFile.getContentType())) {
+            case "image/jpeg":
+                extension = ".jpg";
+                break;
+            case "image/png":
+                extension = ".png";
+                break;
+            default: extension = null;
+        }
+
+
+
+        File file = new File("D:\\GitHub\\Favorskij\\UploadFiles\\src\\main\\resources\\"
+                + new RenameFile().nextString() + extension);
+        multipartFile.transferTo(file);
+
 
 
         return "/upload";
