@@ -50,7 +50,7 @@ public class Image {
 
 
 
-        File file = new File("D:\\resources\\"
+        File file = new File("D:\\GitHub\\Favorskij\\UploadFiles\\src\\main\\resources\\"
                 + new RenameFile().nextString() + extension);
         multipartFile.transferTo(file);
 
