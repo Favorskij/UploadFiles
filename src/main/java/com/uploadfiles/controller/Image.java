@@ -1,6 +1,5 @@
 package com.uploadfiles.controller;
 
-import com.uploadfiles.service.RenameFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletContext;
 import java.io.*;
 import java.util.Objects;
+import java.util.UUID;
 
 @Controller
 public class Image {
@@ -50,8 +50,12 @@ public class Image {
 
 
 
-        File file = new File("D:\\resources\\"
-                + new RenameFile().nextString() + extension);
+//        File file = new File("D:\\GitHub\\Favorskij\\UploadFiles\\src\\main\\resources\\"
+//                + new RenameFile().nextString() + extension);
+//        multipartFile.transferTo(file);
+
+        File file = new File("\\resources\\"
+                + generateString() + extension);
         multipartFile.transferTo(file);
 
 
@@ -60,5 +64,13 @@ public class Image {
     }
 
 
+    public static String generateString() {
+        return UUID.randomUUID().toString().replace("-", "");
+    }
+
+//    public static String generateString() {
+//        String uuid = UUID.randomUUID().toString();
+//        return uuid.replace("-", "");
+//    }
 
 }
